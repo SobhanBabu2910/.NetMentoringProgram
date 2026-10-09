@@ -1,0 +1,77 @@
+Task1:
+Database-Centric Architecture (Shared Database Architecture).
+Why: 
+    Every application directly accesses the same database.
+    Database acts as the central integration point.
+    Applications are tightly coupled through database schema.
+    Business logic is spread across multiple applications.
+Problems with Current Architecture:
+•	Tight Coupling - Single database change impacts all systems.
+•	Security Issues
+•	Scalability Problems (one country to Many) 
+•	All applications hit the same database. - (High CPU, High Memory, Connection    Bottleneck, Slow Queries)
+•	Difficult Maintenance (Business rules duplicated)
+•	Impossible Independent Deployment (Every application depends on the same schema.
+Pros (Monolith):
+•	Simple
+•	Low cost
+•	Easy to start
+•	Fewer infrastructure components
+•	Suitable for small business
+Cons (Monolith):
+•	Tight coupling
+•	Hard to scale
+•	Security concerns
+•	Difficult maintenance
+•	Single point of failure
+•	Database bottleneck
+•	Not suitable for global expansion
+
+Task 2: Proposed Architecture (Modern Solution)
+
+Since company plans global expansion, Microservices Architecture is a better choice.
+  Divide/separate large application into smaller services.
+
+Proposed Architecture Diagram
+
+ ./diagrams/ArchitecturalstyleandPattern.png
+
+Warehouse App ------> Inventory Service                            
+ Manager Web --------> Order Service
+                                           -> Inventory Service
+                                           -> Customer Service           
+Customer Web -------> API Gateway                         
+  Customer Mobile ----> API Gateway
+Courier Mobile -----> Delivery Service
+
+
+
+Instead of direct database access use Event-Driven Communication
+
+                  Order Created
+                       |
+                       v
+                 Message Queue
+                       |
+                       +---- Inventory Service
+                       +---- Delivery Service
+                       +---- Reporting Service
+
+Pros (Microservices)
+•	Independent deployment
+•	High scalability
+•	Better fault isolation
+•	Easier maintenance
+•	Supports multiple countries
+•	Technology flexibility
+•	Separate databases
+•	Better security
+•	Team autonomy
+•	Cloud-native design
+Cons (Microservices)
+•	More infrastructure
+•	Higher operational cost
+•	Distributed transactions complexity
+•	Network latency
+•	Monitoring complexity
+•	Requires DevOps maturity
