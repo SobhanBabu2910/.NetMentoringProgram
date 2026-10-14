@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CartService.BLL/CartService.BLL.csproj" />
+  <Project Path="CartService.DAL/CartService.DAL.csproj" />
+  <Project Path="CartService.Tests/CartService.Tests.csproj" />
+  <Project Path="CartService/CartService.csproj" />
+</Solution>
