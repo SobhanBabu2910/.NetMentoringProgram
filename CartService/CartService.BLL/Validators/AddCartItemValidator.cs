@@ -6,7 +6,7 @@ using CartService.BLL.DTOs;
 
 namespace CartService.BLL.Validators
 {
-    internal class AddCartItemValidator:AbstractValidator<AddCartItemRequest>
+    public class AddCartItemValidator:AbstractValidator<AddCartItemRequest>
     {
         public AddCartItemValidator()
         {
