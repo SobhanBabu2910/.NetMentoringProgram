@@ -1,0 +1,6 @@
+@RestfulCatalog_HostAddress = http://localhost:5150
+
+GET {{RestfulCatalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

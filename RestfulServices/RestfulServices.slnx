@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/CatalogService/" />
+  <Folder Name="/CatalogService/src/">
+    <Project Path="RestfulCatalog.Application/RestfulCatalog.Application.csproj" />
+    <Project Path="RestfulCatalog.Domain/RestfulCatalog.Domain.csproj" />
+    <Project Path="RestfulCatalog.Infrastructure/RestfulCatalog.Infrastructure.csproj" />
+    <Project Path="RestfulCatalog/RestfulCatalog.API.csproj" />
+  </Folder>
+  <Folder Name="/CatalogService/Tests/">
+    <Project Path="CatalogUnitTests/CatalogUnitTests.csproj" />
+  </Folder>
+</Solution>
