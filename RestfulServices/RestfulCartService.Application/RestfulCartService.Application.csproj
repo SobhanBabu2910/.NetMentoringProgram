@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\RestfulCartService.Domain\RestfulCartService.Domain.csproj" />
   </ItemGroup>
 

@@ -1,10 +1,13 @@
 using Asp.Versioning;
+using BuildingBlocks;
+using Microsoft.EntityFrameworkCore;
+using RestfulCartService.Api.HostedServices;
+using RestfulCartService.Application.Consumers;
 using RestfulCartService.Application.Interfaces;
 using RestfulCartService.Application.Services;
 using RestfulCartService.Infrastructure.Data;
 using RestfulCartService.Infrastructure.Repositories;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +54,12 @@ builder.Services.AddSwaggerGen(options =>
 
     options.IncludeXmlComments(xmlPath);
 });
+
+builder.Services.AddAzureServiceBus(builder.Configuration);
+
+builder.Services.AddScoped<ProductUpdatedConsumer>();
+
+builder.Services.AddHostedService<ProductUpdatedHostedService>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
