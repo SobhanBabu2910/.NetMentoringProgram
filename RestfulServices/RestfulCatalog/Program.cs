@@ -1,3 +1,4 @@
+using BuildingBlocks;
 using Microsoft.EntityFrameworkCore;
 using RestfulCatalog.API;
 using RestfulCatalog.API.Middleware;
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<CatalogDbContext>(options =>
         .GetConnectionString(
             "DefaultConnection"));
 });
+builder.Services.AddAzureServiceBus(builder.Configuration);
 
 var app = builder.Build();
 
@@ -31,13 +33,9 @@ app.UseSwagger();
 
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint(
-        "/swagger/v1/swagger.json",
-        "Catalog API V1");
+    options.SwaggerEndpoint("/swagger/v1/swagger.json","Catalog API V1");
 
-    options.SwaggerEndpoint(
-        "/swagger/v2/swagger.json",
-        "Catalog API V2");
+    options.SwaggerEndpoint("/swagger/v2/swagger.json","Catalog API V2");
 });
 
 app.UseHttpsRedirection();

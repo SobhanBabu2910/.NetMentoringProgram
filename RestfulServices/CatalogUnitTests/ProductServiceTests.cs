@@ -1,7 +1,7 @@
-﻿using Moq;
+﻿using BuildingBlocks.Messaging.Interfaces;
+using Moq;
 using RestfulCatalog.Application.DTOs.Product;
 using RestfulCatalog.Application.Interfaces.Repositories;
-using RestfulCatalog.Application.Interfaces.Services;
 using RestfulCatalog.Application.Services;
 using RestfulCatalog.Domain.Entities;
 
@@ -12,21 +12,23 @@ namespace CatalogUnitTests
     {
         private Mock<IProductRepository> _productRepositoryMock;
         private Mock<ICategoryRepository> _categoryRepositoryMock;
+        private Mock<IMessagePublisher> _messagePublisherMock;
         private ProductService _productService;
 
 
         [SetUp]
         public void Setup()
         {
-            _productRepositoryMock =
-            new Mock<IProductRepository>();
+            _productRepositoryMock = new Mock<IProductRepository>();
 
-            _categoryRepositoryMock =
-                new Mock<ICategoryRepository>();
+            _categoryRepositoryMock =new Mock<ICategoryRepository>();
+
+            _messagePublisherMock = new Mock<IMessagePublisher>();
 
             _productService = new ProductService(
                 _productRepositoryMock.Object,
-                _categoryRepositoryMock.Object);
+                _categoryRepositoryMock.Object,
+                _messagePublisherMock.Object);
         }
         [Test]
         public async Task CreateAsync_GivenValidProductDto_WhenCalled_ThenProductShouldBeCreated()
